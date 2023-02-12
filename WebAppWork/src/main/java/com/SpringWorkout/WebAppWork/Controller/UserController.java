@@ -21,4 +21,16 @@ public class UserController {
 
         return "users";
     }
+
+    @GetMapping("/users/new")
+    public String showNewForm(Model model){
+        model.addAttribute("user",new User());
+        return "user_form";
+    }
+
+    @GetMapping("/users/save")
+    public String saveUser(User user ){
+        service.save(user);
+        return "redirect:/users";
+    }
 }
