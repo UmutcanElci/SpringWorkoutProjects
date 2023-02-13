@@ -14,4 +14,18 @@ public class OutputItem {
         this.quantity = quantity;
         this.users = users;
     }
+
+    //Overloaded Contructor , takes in another input item and constructs an OutputItem
+    public OutputItem(InputItem inputItem){
+        this.name = inputItem.name;
+        this.price = inputItem.price;
+        this.quantity = inputItem.quantity;
+        ArrayList<SlimOutputUser> listOfUsers = new ArrayList<>();
+
+        for (InputUser inputUser : inputItem.users){
+            SlimOutputUser outputUser = new SlimOutputUser(inputUser);
+            listOfUsers.add(outputUser);
+        }
+        this.users = listOfUsers;
+    }
 }

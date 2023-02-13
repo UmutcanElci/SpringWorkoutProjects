@@ -2,10 +2,12 @@ package com.BillSpitter.SpringLearn.Service;
 
 import com.BillSpitter.SpringLearn.models.InputItem;
 import com.BillSpitter.SpringLearn.models.InputUser;
+import com.BillSpitter.SpringLearn.models.OutputItem;
 import com.BillSpitter.SpringLearn.models.OutputUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class BillSplitterService {
     /*
@@ -26,6 +28,33 @@ public class BillSplitterService {
             }
         }
         return userToItems;
+    }
+    private static ArrayList<OutputUser> getOutputUsers(HashMap<String,ArrayList<InputItem>> usersToItems){
+        for(Map.Entry<String,ArrayList<InputItem>> singleUserToItems : usersToItems.entrySet()){
+            String userName = singleUserToItems.getKey();
+            ArrayList<InputItem> userItems = singleUserToItems.getValue();
+
+            double totalPayableToUser = 0.0;
+            //for each item a user is contributing to, calculate the price the user has to pay
+            for (InputItem items : userItems){
+                //totalItemPrice is the product of price and quantity
+                Double currentItemPrice = items.price * items.quantity;
+                // Item Contributors
+                ArrayList<InputUser> itemContributors = items.users;
+                Integer usersContributing = itemContributors.size();
+                //Represents the price the user needs to pay for this item
+                double itemPayableToUser = currentItemPrice / usersContributing;
+
+                totalPayableToUser += itemPayableToUser;
+            }
+
+            ArrayList<OutputItem> outputUserItems = new ArrayList<>();
+
+            OutputItem outputItem = new OutputItem();
+            outputUserItems.add();
+
+            OutputUser currOutputUser = new OutputUser(userName,totalPayableToUser,userItems);
+        }
     }
     public static ArrayList<OutputUser> splitBill(ArrayList<InputItem> items){
         HashMap<String,ArrayList<InputItem>> userToItems = BillSplitterService.getUserToItems(items);
