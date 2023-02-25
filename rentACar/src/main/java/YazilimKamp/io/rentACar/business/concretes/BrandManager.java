@@ -21,4 +21,6 @@ public class BrandManager implements BrandService {
         return brandRepository.getAll();
     }
 
+
+
 }
