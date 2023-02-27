@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface BrandRepository extends JpaRepository<Brand,Integer> {//Integer veri tipi (ID ya da primary key de diyebiliriz)
     //BrandDao da denir
+    //Spirng JPA yı kullanrak veri işlemleri efektif bir şekilde kullanabiliyoruz
 }
