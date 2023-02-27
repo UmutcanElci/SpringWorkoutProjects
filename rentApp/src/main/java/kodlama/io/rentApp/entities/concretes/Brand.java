@@ -15,11 +15,21 @@ import lombok.Setter;
 @Table(name = "brands")
 public class Brand {
     //Entities çoğunlukla veri tabanında oluşturduğumuz nesneler diyebiliriz
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id//PK primary key anlamına geliyor
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Her veri eklendiğinde takip etmek yerine otomatik üretmesini sağlar ( RDBS !!)
     @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
 
+    
+
+    //Brand --> id,name,quantity
+    //GetAllBrandsResponse --> id , name
+    /*
+    şimdi bizim 3 tane kolonumuzun olduğunu düşünelim ve bu kolonlarıdan yani verilerden quantity i göstermek istemiyoruz son kullanıcıya ne yaparız?
+    Bunun için Ayrı bir sınıf oluşturduk response diye bunun olayı son kullanıcıya gösterilecek oaln verileri içeriyor. O verileri almak içinde kendi ana modelimizden yani Entity deki
+    verileri bu oluşturduğumuz response sınıfına atarız
+    Buna mapping deniyor (Yine kabaca)
+     */
 }
