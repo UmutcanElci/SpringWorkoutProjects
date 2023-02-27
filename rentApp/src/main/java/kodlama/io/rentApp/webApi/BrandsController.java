@@ -1,9 +1,11 @@
 package kodlama.io.rentApp.webApi;
 
 import kodlama.io.rentApp.business.abstracts.BrandService;
-import kodlama.io.rentApp.entities.concretes.Brand;
+import kodlama.io.rentApp.business.requests.CreateBrandRequest;
+import kodlama.io.rentApp.business.responses.GetAllBrandsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +26,16 @@ public class BrandsController {
     //obje üzerinden dönyor(Kaba bir açıklama!)
 
     @GetMapping("/getall")
-    public List<Brand> getall(){
-        return brandService.getall();
+    public List<GetAllBrandsResponse> getAll(){
+        return brandService.getAll();
     }
 
     /*
     Şimdi biz /api/brands/getAll adresine istek attık bunun için brandService yani busness a gidicez, oda iş kurallarını çalıştıracak
     ordan da repository e gidice ve veriyi bize vericek
      */
+    @PostMapping("/add")
+    public void add(CreateBrandRequest createBrandRequest){
+        this.brandService.add(createBrandRequest);
+    }
 }
