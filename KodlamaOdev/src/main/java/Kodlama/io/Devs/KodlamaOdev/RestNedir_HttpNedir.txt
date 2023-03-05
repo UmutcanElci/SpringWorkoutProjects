@@ -1,0 +1,7 @@
+Rest --> Representatiobal State Transfer(Türkçe ye Temsili Durum Transferi olarak çeviriliyor bence yanlış)
+Rest web hizmetleri arasında hızlı ve kolay iletişim kurulmasını sağlayan servis yapısıdır.
+Rest ile web sunucuları arasında veri transferi yababiliriz
+
+Http --> Hyper Text Transfer Protocol dan gelir. Aslında Http herkesin kabul ettiği bir protokoldür.
+Http internet üzerinde yer alan bilgilerin-verilerin başka kullanıcılara-sunuculara nasıl aktarımın sağlanacağını gösteren ve uygulayan bir yoldur
+Http istemci-sunucu bilgi ilem modelinde bir istek-yanıt protokolü de diye biliriz
