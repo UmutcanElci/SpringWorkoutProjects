@@ -14,4 +14,5 @@ public interface BrandService {//Veri erişim işlemleri burada gerçekleşir
 
     void update(UpdateBrandRequest update);
     void delete(int id);
+
 }

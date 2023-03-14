@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Table(name = "models")
 @Getter
 @Setter
@@ -25,4 +27,7 @@ public class Model {//Car Model
     private Brand brand;
     //Ama bir modelin bir markası vardır
     //Bire çok ilişki
+
+    @OneToMany(mappedBy = "model")
+    private List<Car> carList;
 }

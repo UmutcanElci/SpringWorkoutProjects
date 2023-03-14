@@ -5,11 +5,11 @@ import kodlama.io.rentApp.business.requests.CreateBrandRequest;
 import kodlama.io.rentApp.business.requests.UpdateBrandRequest;
 import kodlama.io.rentApp.business.responses.GetAllBrandsResponse;
 import kodlama.io.rentApp.business.responses.GetByIdBrandResponse;
+import kodlama.io.rentApp.business.rules.BrandBusninessRules;
 import kodlama.io.rentApp.core.utilities.mappers.ModelMapperService;
 import kodlama.io.rentApp.dataAccess.abstracts.BrandRepository;
 import kodlama.io.rentApp.entities.concretes.Brand;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class BrandManager implements BrandService {//Interface den gelen işleml
     Verileri BrandRepository katmanını enjekte ederek erişiyoruz
      */
     private ModelMapperService modelMapperService;
+    private BrandBusninessRules brandBusninessRules;
 
 
     /*
@@ -60,6 +61,8 @@ public class BrandManager implements BrandService {//Interface den gelen işleml
 
     @Override
     public void add(CreateBrandRequest request) {//Reflection da denir burda yaptığımız işleve yani mapper işlevine
+        this.brandBusninessRules.checkIfBrandNameExists(request.getName());//Exception
+
         Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);//Şimdi bizim bir requestimiz var kullanıcınmın girdiği bunu Brand sınıfına çevir anlamına geliyor
         /*
         Brand brand = new Brand();
