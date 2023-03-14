@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -21,4 +23,6 @@ public class Languages {
     @Column(name = "languageName")
     private String name;
 
+    @OneToMany(mappedBy = "languages")
+    private List<Frameworks> frameworks;
 }

@@ -1,5 +1,6 @@
-package kodlama.io.rentApp.webApi;
+package kodlama.io.rentApp.webApi.controllers;
 
+import jakarta.validation.Valid;
 import kodlama.io.rentApp.business.abstracts.BrandService;
 import kodlama.io.rentApp.business.requests.CreateBrandRequest;
 import kodlama.io.rentApp.business.requests.UpdateBrandRequest;
@@ -36,7 +37,7 @@ public class BrandsController {
      */
     @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)//200
-    public void add(CreateBrandRequest createBrandRequest){
+    public void add(@RequestBody() @Valid() CreateBrandRequest createBrandRequest){//Valid ile ilgili işlemlerin gerçekleşitirmke istiyorsak method da Valid annotasyonunu eklememiz lazım
         this.brandService.add(createBrandRequest);
     }
 
