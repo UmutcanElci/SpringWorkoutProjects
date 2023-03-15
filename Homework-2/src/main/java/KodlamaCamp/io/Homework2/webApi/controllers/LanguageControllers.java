@@ -2,14 +2,11 @@ package KodlamaCamp.io.Homework2.webApi.controllers;
 
 import KodlamaCamp.io.Homework2.business.abtracts.LanguagesService;
 import KodlamaCamp.io.Homework2.business.requests.CreateLanguagesRequest;
+import KodlamaCamp.io.Homework2.business.requests.UpdateLanguagesRequest;
 import KodlamaCamp.io.Homework2.business.responses.GetAllLanguagesResponse;
 import KodlamaCamp.io.Homework2.core.mappers.ModelMapperService;
-import KodlamaCamp.io.Homework2.entities.concretes.Languages;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,14 @@ public class LanguageControllers {
     @PostMapping("/add")
     public void add(CreateLanguagesRequest createLanguagesResponse){
         languagesService.add(createLanguagesResponse);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteById(int id){
+        languagesService.deleteById(id);
+    }
+    @PostMapping("/update")
+    public void update(UpdateLanguagesRequest updateLanguagesRequest){
+        languagesService.update(updateLanguagesRequest);
     }
 }
