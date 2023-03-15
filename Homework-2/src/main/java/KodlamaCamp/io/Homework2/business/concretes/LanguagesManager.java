@@ -2,6 +2,7 @@ package KodlamaCamp.io.Homework2.business.concretes;
 
 import KodlamaCamp.io.Homework2.business.abtracts.LanguagesService;
 import KodlamaCamp.io.Homework2.business.requests.CreateLanguagesRequest;
+import KodlamaCamp.io.Homework2.business.requests.UpdateLanguagesRequest;
 import KodlamaCamp.io.Homework2.business.responses.GetAllLanguagesResponse;
 import KodlamaCamp.io.Homework2.core.mappers.ModelMapperService;
 import KodlamaCamp.io.Homework2.dataAccess.abstracts.LanguagesRepository;
@@ -29,6 +30,17 @@ public class LanguagesManager implements LanguagesService{
     @Override
     public void add(CreateLanguagesRequest createLanguagesRequest) {
         Languages languages = this.modelMapperService.forRequest().map(createLanguagesRequest,Languages.class);
+        this.languagesRepository.save(languages);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        languagesRepository.deleteById(id);
+    }
+
+    @Override
+    public void update(UpdateLanguagesRequest updateLanguagesRequest) {
+        Languages languages = this.modelMapperService.forRequest().map(updateLanguagesRequest,Languages.class);
         this.languagesRepository.save(languages);
     }
 

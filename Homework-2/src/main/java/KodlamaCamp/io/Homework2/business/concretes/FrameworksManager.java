@@ -2,6 +2,7 @@ package KodlamaCamp.io.Homework2.business.concretes;
 
 import KodlamaCamp.io.Homework2.business.abtracts.FrameworksService;
 import KodlamaCamp.io.Homework2.business.requests.CreateFrameworksRequest;
+import KodlamaCamp.io.Homework2.business.requests.UpdateFrameworksRequest;
 import KodlamaCamp.io.Homework2.business.responses.GetAllFramewroksResponse;
 import KodlamaCamp.io.Homework2.core.mappers.ModelMapperService;
 import KodlamaCamp.io.Homework2.dataAccess.abstracts.FrameworksRepository;
@@ -31,4 +32,17 @@ public class FrameworksManager implements FrameworksService {
         Frameworks frameworks = this.modelMapperService.forRequest().map(createFrameworksRequest,Frameworks.class);
         this.frameworksRepository.save(frameworks);
     }
+
+    @Override
+    public void deleteById(int id) {
+        frameworksRepository.deleteById(id);
+    }
+
+    @Override
+    public void update(UpdateFrameworksRequest updateFrameworksRequest) {
+        Frameworks frameworks = this.modelMapperService.forRequest().map(updateFrameworksRequest,Frameworks.class);
+        this.frameworksRepository.save(frameworks);
+    }
+
+
 }
